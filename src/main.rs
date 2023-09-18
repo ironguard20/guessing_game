@@ -4,40 +4,11 @@ fn main() {
 
     println!("Please input your guess.");
 
-    // We use let to define variables.
-    // We use mut to make a variable mutable.
-    // Variables are immutable by default.
-    // :: syntax indicates new is an associated function of the String type.
-    // An AF is a function that's implemented on a type, in this case, a string.
     let mut guess = String::new(); // This line creates a mutable variable "guess" that is currently bound to a new, empty instance of a String. So guess = "" in this case.
 
-    // Despite calling io::stdin() we could have called it via std::io::stdin() if we did not import io at the beginning of the script
-    // The stdin function returns an instance of std::io::Stdin, which is a type that represents a handle
-    // to the standard input for your terminal.
 
     io::stdin()
-        // We call the read_line method on the standard input handle to get input from the user.
-        // we also pass &mut guess as an argument to tell it what string to store the user input in.
-        // read_line's only purpose is to take whatever the user types into the standard input and append it to a string
-        // without overwriting content of that string
-        // The string argument needs to be mutable so that method can change the strings content.
-
-        // The & indicates that this argument is a reference, which gives you a way to let multiple parts of your code
-        // access one piece of data without needing to copy that data into memory multiple times.
-        // References are complex, but all we need to know currently is that references are immutable by default.
-        // Therefore, &mut guess should be written, rather than &guess, because we're passing the reference and NOT the variable itself.
         .read_line(&mut guess)
-
-        // Read_line puts whatever the user enters into the string we pass to it, but it also returns a result value.
-        // Result is an enumeration, often called an enum.
-        // An enum is a type that can be in one of multiple possible states
-        // Each state is called a variant.
-        // Result enum has two variants, Ok and Err. Ok indicates the operation was successful and returns the value.
-        // Err means the operation failed, and Err will content info about how or why the operation failed.
-        // Result has methods defined on them. An instance of Result has an expect method that is callable.
-        // If this instance of result is an Err value, expect will cause the program to crash and display the message that you passed as an argument to expect.
-        // If this isntance of result is an Ok value, expect will take the return value that Ok is holding, and return just that value so that you can use it.
-        // In this case, that value is the number of bytes in the user's input.
         .expect("Failed to read line");
 
     println!("You guessed: {guess}");
