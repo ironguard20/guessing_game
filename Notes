@@ -40,6 +40,13 @@ fn main() {
         // In this case, that value is the number of bytes in the user's input.
         .expect("Failed to read line");
 
+    // For string data, you can assign the value using {} to target the variable
     println!("You guessed: {guess}");
+    // For a variable that is the result of an expression, it would look like so:
+    let x = 5;
+    let y = 10;
+
+    println!("x = {x} and y + 2 = {}", y + 2);
+
 
 }
